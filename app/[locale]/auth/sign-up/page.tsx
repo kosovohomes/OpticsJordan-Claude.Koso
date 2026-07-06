@@ -17,7 +17,7 @@ export default async function SignUpPage({ params, searchParams }: Props) {
         <SignUp
           appearance={{ elements: { formButtonPrimary: "bg-brand-600 hover:bg-brand-700" } }}
           unsafeMetadata={{ intendedRole: role ?? "CUSTOMER" }}
-          redirectUrl={`/${locale}/onboarding`}
+          redirectUrl={`/${locale}`}
           signInUrl={`/${locale}/auth/sign-in`}
         />
       </div>
