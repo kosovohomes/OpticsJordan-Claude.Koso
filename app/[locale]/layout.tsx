@@ -36,24 +36,22 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
   const isRTL = locale === "ar";
 
-  const clerkEnabled = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-
-  const content = (
-    <html
-      lang={locale}
-      dir={isRTL ? "rtl" : "ltr"}
-      className={`${inter.variable} ${notoKufi.variable}`}
-      suppressHydrationWarning
-    >
-      <body className={isRTL ? "font-arabic" : "font-sans"}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header locale={locale} />
-          <main className="min-h-screen">{children}</main>
-          <Footer locale={locale} />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+  return (
+    <ClerkProvider>
+      <html
+        lang={locale}
+        dir={isRTL ? "rtl" : "ltr"}
+        className={`${inter.variable} ${notoKufi.variable}`}
+        suppressHydrationWarning
+      >
+        <body className={isRTL ? "font-arabic" : "font-sans"}>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Header locale={locale} />
+            <main className="min-h-screen">{children}</main>
+            <Footer locale={locale} />
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
-
-  return clerkEnabled ? <ClerkProvider>{content}</ClerkProvider> : content;
 }

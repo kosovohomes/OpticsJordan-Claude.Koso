@@ -1,3 +1,4 @@
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ShoppingCart, Globe } from "lucide-react";
 
 export function Header({ locale }: { locale: string }) {
@@ -33,12 +34,17 @@ export function Header({ locale }: { locale: string }) {
           <a href={`/${locale}/shop/cart`} className="relative flex h-9 w-9 items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100">
             <ShoppingCart className="h-5 w-5" />
           </a>
-          <a href={`/${locale}/auth/sign-in`} className="text-sm font-medium text-gray-700 hover:text-brand-600">
-            {isAr ? "دخول" : "Sign in"}
-          </a>
-          <a href={`/${locale}/auth/sign-up`} className="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">
-            {isAr ? "تسجيل" : "Sign up"}
-          </a>
+          <SignedIn>
+            <UserButton afterSignOutUrl={`/${locale}`} />
+          </SignedIn>
+          <SignedOut>
+            <a href={`/${locale}/auth/sign-in`} className="text-sm font-medium text-gray-700 hover:text-brand-600">
+              {isAr ? "دخول" : "Sign in"}
+            </a>
+            <a href={`/${locale}/auth/sign-up`} className="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">
+              {isAr ? "تسجيل" : "Sign up"}
+            </a>
+          </SignedOut>
         </div>
       </div>
     </header>
