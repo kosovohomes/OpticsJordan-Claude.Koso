@@ -1,0 +1,32 @@
+{
+  "Home": {
+    "meta": {
+      "title": "OpticsJordan – Jordan's Premier Optics Marketplace",
+      "description": "Shop the best eyeglasses, sunglasses, and contact lenses in Jordan"
+    },
+    "hero": {
+      "title": "OpticsJordan",
+      "subtitle": "Your all-in-one destination for prescription eyeglasses, sunglasses, and contact lenses",
+      "shopNow": "Shop Now",
+      "register": "Create Account"
+    },
+    "categories": {
+      "title": "Shop by Category",
+      "eyeglasses": "Eyeglasses",
+      "sunglasses": "Sunglasses",
+      "contact-lenses": "Contact Lenses",
+      "accessories": "Accessories"
+    },
+    "b2b": {
+      "title": "Are you an optician or supplier?",
+      "subtitle": "Join our network of suppliers and shop owners",
+      "shopOwner": "Register Your Shop",
+      "supplier": "Become a Supplier"
+    }
+  },
+  "Nav": {
+    "products": "Products",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  }
+}

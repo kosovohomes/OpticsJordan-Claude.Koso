@@ -1,0 +1,46 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  darkMode: ["class"],
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        arabic: ["var(--font-noto-kufi)", "system-ui", "sans-serif"],
+      },
+      colors: {
+        brand: {
+          50: "#eff6ff",
+          100: "#dbeafe",
+          200: "#bfdbfe",
+          600: "#1e4fad",
+          700: "#1a3f8f",
+          800: "#1e3a6e",
+          900: "#1e2f52",
+          950: "#0f172a",
+        },
+        gold: {
+          400: "#facc15",
+          500: "#eab308",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+    },
+  },
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+  ],
+};
+
+export default config;
