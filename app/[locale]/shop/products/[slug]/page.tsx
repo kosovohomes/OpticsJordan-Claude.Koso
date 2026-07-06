@@ -9,7 +9,7 @@ type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const p = await prisma.product.findUnique({ where: { slug }, select: { nameAr: true, nameEn: true } });
+  const p = await prisma.product.findUnique({ where: { slug }, select: { nameAr: true, nameEn: true } }).catch(() => null);
   if (!p) return { title: "Not Found" };
   return { title: locale === "ar" ? p.nameAr : p.nameEn };
 }
@@ -21,7 +21,7 @@ export default async function ProductPage({ params }: Props) {
   const product = await prisma.product.findUnique({
     where: { slug, status: "ACTIVE" },
     include: { category: true, brand: true, variants: true },
-  });
+  }).catch(() => null);
   if (!product) notFound();
 
   const name = isAr ? product.nameAr : product.nameEn;

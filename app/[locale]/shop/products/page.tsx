@@ -52,9 +52,9 @@ export default async function ProductsPage({ params, searchParams }: Props) {
       skip: (page - 1) * PAGE_SIZE,
       take: PAGE_SIZE,
       include: { category: true, brand: true },
-    }),
-    prisma.product.count({ where }),
-    prisma.category.findMany({ where: { isActive: true, parentId: null }, orderBy: { sortOrder: "asc" } }),
+    }).catch(() => []),
+    prisma.product.count({ where }).catch(() => 0),
+    prisma.category.findMany({ where: { isActive: true, parentId: null }, orderBy: { sortOrder: "asc" } }).catch(() => []),
   ]);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);
